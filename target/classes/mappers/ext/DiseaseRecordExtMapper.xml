@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.product_source.dao.ext.DiseaseRecordExtMapper">
+    <resultMap id="RecordWithDiseaseMap" type="DiseaseRecordExt"
+               extends="com.briup.product_source.dao.DiseaseRecordMapper.BaseResultMap">
+        <association property="disease" javaType="managerDisease"
+                     resultMap="com.briup.product_source.dao.ManagerDiseaseMapper.BaseResultMap"/>
+    </resultMap>
+
+    <select id="selectDiseasedAnimal" resultMap="RecordWithDiseaseMap">
+            select *
+            FROM manager_disease a inner join disease_record b
+            on a.d_id = b.dr_d_id
+        <where>
+            <if test="drStatus != null and drStatus != ''">
+                dr_status = #{drStatus}
+            </if>
+            <if test="drDId != null">
+                AND dr_d_id = #{drDId}
+            </if>
+        </where>
+    </select>
+</mapper>

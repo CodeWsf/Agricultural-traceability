@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.product_source.dao.ext.ManagerHurdlesExtMapper">
+    <resultMap id="HurdlesAndHousesMap" type="ManagerHurdlesExt" extends="com.briup.product_source.dao.ManagerHurdlesMapper.BaseResultMap">
+        <association    property="managerFenceHouse" resultMap="com.briup.product_source.dao.ManagerFenceHouseMapper.BaseResultMap"/>
+    </resultMap>
+    <select id="findHurdlesWithHouseByConditions" resultMap="HurdlesAndHousesMap">
+        select *
+        from manager_hurdles  mh
+        left join manager_fence_house mfh on mfh.h_fence_id = mh.fh_id
+        <where>
+            <if test="hName != null">
+                and manager_hurdles.h_name like concat('%',#{hName},'%')
+            </if>
+            <if test="hMax != null">
+                and manager_hurdles.h_max = #{hMax}
+            </if>
+            <if test="fhName != null">
+                and manager_fence_house.fh_name=#{fhName}
+            </if>
+            <if test="hEnable != null">
+                and manager_hurdles.h_enable = #{hEnable}
+            </if>
+        </where>
+        order by mh.h_time desc
+    </select>
+</mapper>
