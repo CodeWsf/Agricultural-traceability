@@ -1,6 +1,7 @@
 package com.briup.product_source.dao;
 
 import com.briup.product_source.pojo.ManagerAnimal;
+import org.apache.ibatis.annotations.MapKey;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -15,6 +16,6 @@ public interface ManagerAnimalMapper {
     int updateByPrimaryKey(ManagerAnimal animal);
 
     int insert(ManagerAnimal animal);
-
+//    @MapKey("aWeight")
     Map<String, Integer> countWeight();
 }
