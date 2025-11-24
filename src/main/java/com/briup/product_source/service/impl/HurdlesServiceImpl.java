@@ -5,6 +5,7 @@ import com.briup.product_source.dao.ext.ManagerHurdlesExtMapper;
 import com.briup.product_source.exception.ServiceException;
 import com.briup.product_source.pojo.ManagerHurdles;
 import com.briup.product_source.pojo.ext.ManagerHurdlesExt;
+import com.briup.product_source.result.Result;
 import com.briup.product_source.result.ResultCode;
 import com.briup.product_source.service.HurdlesService;
 import com.github.pagehelper.PageHelper;
@@ -40,7 +41,7 @@ public class HurdlesServiceImpl implements HurdlesService {
             throw new ServiceException(ResultCode.DATA_IS_EMPTY);
         //2.调整状态值【解决传参bug】
 //System.out.println("in service, hEnable: " + hEnable);
-        if ("可用".equals(hEnable)) {
+        if (!"可用".equals(hEnable)) {
             hEnable = "禁用";
         }else {
             hEnable = "可用";
@@ -53,6 +54,9 @@ public class HurdlesServiceImpl implements HurdlesService {
     @Override
     public void modifyStatusBatch(List<Map<String, String>> list){
         int sum = 0;
+        if (list == null || list.isEmpty()) {
+            throw new  ServiceException(ResultCode.PARAM_IS_EMPTY);
+        }
         for (Map<String, String> map : list) {
             String hId = map.get("hId");
             if (managerHurdlesMapper.selectByPrimaryKey(hId) == null) {
@@ -60,7 +64,7 @@ public class HurdlesServiceImpl implements HurdlesService {
             }
             String hEnable = map.get("hEnable");
             String status = "可用";
-            if (status.equals(hEnable)) {
+            if (!status.equals(hEnable)) {
                 status = "禁用";
             }
             sum += managerHurdlesMapper.updateEnableById(hId, status);

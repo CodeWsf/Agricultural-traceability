@@ -15,4 +15,6 @@ public interface ManagerHurdlesMapper {
     int updateEnableById(String hId, String hEnable);
 
     List<ManagerHurdles> selectAllEnable();
+
+    void updateByPrimaryKey(ManagerHurdles hurdlesNew);
 }

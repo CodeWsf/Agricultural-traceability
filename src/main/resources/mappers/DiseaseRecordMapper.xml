@@ -21,7 +21,7 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from manager_disease
+        from disease_record
     </select>
 
     <insert id="insert">

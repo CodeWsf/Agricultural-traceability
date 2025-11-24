@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface ManagerAnimalExtMapper {
 
-    List<ManagerAnimalExt> selectAnimalRelated(String aHeathy, String aGender);
+    List<ManagerAnimalExt> selectAnimalRelated(String aHealthy, String aGender);
 }

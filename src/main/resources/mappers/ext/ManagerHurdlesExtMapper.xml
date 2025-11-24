@@ -9,7 +9,7 @@
     <select id="findHurdlesWithHouseByConditions" resultMap="HurdlesAndHousesMap">
         select *
         from manager_hurdles  mh
-        left join manager_fence_house mfh on mfh.h_fence_id = mh.fh_id
+        left join manager_fence_house mfh on mfh.fh_id = mh.h_fence_id
         <where>
             <if test="hName != null">
                 and manager_hurdles.h_name like concat('%',#{hName},'%')

@@ -22,4 +22,6 @@ public interface ManagerFenceHouseMapper {
     int deleteBatchByIds(List<String> ids);
 
     List<ManagerFenceHouse> queryAll();
+
+    List<Object> countAllResources();
 }

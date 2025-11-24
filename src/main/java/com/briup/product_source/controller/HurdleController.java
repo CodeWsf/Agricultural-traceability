@@ -52,7 +52,7 @@ public class HurdleController {
     }
     @ApiOperation("用于批量修改栏圈的启用状态")
     @PutMapping
-    public Result changeStatusBatch(List<Map<String,String>> list){
+    public Result changeStatusBatch(@RequestBody List<Map<String,String>> list){
         hurdlesService.modifyStatusBatch(list);
         return Result.success();
     }

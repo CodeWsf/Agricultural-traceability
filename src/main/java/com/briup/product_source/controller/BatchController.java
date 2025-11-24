@@ -18,7 +18,7 @@ import java.util.List;
 public class BatchController {
     @Autowired
     private ManagerBatchService batchService;
-    @ApiOperation("2.查询未检疫的批次")
+    @ApiOperation("查询未检疫的批次")
     @GetMapping("/queryAllUnquarantined")
     public Result queryAllUnquarantined(){
         List<ManagerBatch> list=batchService.findAllUnquarantined();

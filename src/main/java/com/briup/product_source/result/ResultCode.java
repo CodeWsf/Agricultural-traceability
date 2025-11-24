@@ -26,12 +26,15 @@ public enum ResultCode {
 
 	/* 栏舍管理模块错误 2001 - 2999 */
 	FENCE_HOUSE_IS_EXIST(2001, "栏舍名称已经存在"),
-	FENCE_HOUSE_NOT_EXIST(2002,"栏舍名称不存在" ),	/* 栏圈管理模块错误 3001 - 3999 */
+	FENCE_HOUSE_NOT_EXIST(2002,"栏舍名称不存在" ),
 	FENCE_HOUSE_ID_INVALID(2003,"Id错误" ),
 	FENCE_HOUSENAME_IS_EXIST(2004,"名称无效" ),
+	/* 栏圈管理模块错误 3001 - 3999 */
+	HURDLES_NOT_EXIST(3001,"栏圈没有存在" ),
+
 	/* 动物管理模块错误 4001 - 4999 */
 	ANIMAL_IS_NOT_IN_BREEDING(4001, "动物不在养殖中，无法添加病症记录"),
-
+	ANIMAL_NOT_EXIST(4002,"动物不存在" ),
 
 	/* 指标记录模块错误 5001 - 5999 */
 	BATCH_NOT_EXIST(5001,"影响行数为0" );
